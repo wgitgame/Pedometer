@@ -52,4 +52,22 @@ public class FrameApplication extends Application {
             android.os.Process.killProcess(android.os.Process.myPid());
         }
     }
+
+    private SharedPreferenceManager sharedPreferenceManager;
+    private static FrameApplication instance;
+
+    public static FrameApplication getInstance() {
+        return instance;
+    }
+
+    public SharedPreferenceManager getSharedPreferenceManager() {
+        return sharedPreferenceManager;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+        sharedPreferenceManager = new SharedPreferenceManager(this);
+    }
 }
